@@ -12,7 +12,7 @@ class Usuario{
 	}
 
 
-	public function setIdusuario(){
+	public function setIdusuario($value){
 		$this->idusuario=$value;
 	}
 
@@ -21,7 +21,7 @@ class Usuario{
 	}
 
 
-	public function setDeslogin(){
+	public function setDeslogin($value){
 		$this->deslogin=$value;
 	}
 
@@ -30,7 +30,7 @@ class Usuario{
 	}
 
 
-	public function setDessenha(){
+	public function setDessenha($value){
 		$this->dessenha=$value;
 	}
 
@@ -39,7 +39,7 @@ class Usuario{
 	}
 
 
-	public function setDetcadastro(){
+	public function setDetcadastro($value){
 		$this->dtcadastro=$value;
 	}
 
@@ -47,20 +47,30 @@ public function loadById($id){
 
 	$sql= new Sql();
 
-	$results = $sql ->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array());
+	$results = $sql ->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
+
+			":ID"=>$id
+
+		));
 
 	if(count($results)>0){
 
 			$row = $results[0];
 
-			$this ->setIdusuario(row['idusuario']);
-			$this ->setDeslogin(row['deslogin']);
-			$this ->setDessenha(row['dessenha']);
-			$this ->setDetcadastro(new DateTime (row['dtcadastro']));
+			$this ->setIdusuario($row['idusuario']);
+			$this ->setDeslogin($row['deslogin']);
+			$this ->setDessenha($row['dessenha']);
+			$this ->setDetcadastro(new DateTime ($row['dtcadastro']));
 
 		}
 
 	}
+// Funciona sem um objeto - não $this - podendo ser um método estático
+public static function getList (){
+
+	$sql = new Sql();
+	return $sql -> select("SELECT * FROM tb_usuarios ORDER BY deslogin;");
+}
 
 public function __toString(){
 
@@ -74,11 +84,6 @@ public function __toString(){
         }    else {
         return 'Usuário inexistente';
     	}
-        
-
-
-
-
 	}
 
 }	

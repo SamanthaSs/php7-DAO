@@ -8,11 +8,18 @@ $usuarios = $sql->select("SELECT * FROM tb_usuarios"); // puxa o metodo select d
 
 echo json_encode($usuarios); //codifica os dados na tela*/
 
-$root = new Usuario();
+//Carrega um usuário
+//$root = new Usuario();
 
-$root -> loadbyId(1);
+//$root -> loadbyId(1);
+// echo $root;
 
-echo $root;
+
+// Carrega lista de usuários
+
+$lista = Usuario :: getList();
+
+echo json_encode($lista);
 
 
 ?>
