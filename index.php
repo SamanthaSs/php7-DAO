@@ -17,9 +17,24 @@ echo json_encode($usuarios); //codifica os dados na tela*/
 
 // Carrega lista de usuários
 
-$lista = Usuario :: getList();
+//$lista = Usuario :: getList(); // chamada de um método estático 
 
-echo json_encode($lista);
+//echo json_encode($lista);
+
+// Pesquisa pelo nome de usuário
+
+//$search = Usuario::search("ro");
+
+//echo json_encode($search);
+
+// carrega um usuário usando login e senha
+
+$usuario = new Usuario();
+
+$usuario -> login("root","@#$");
+
+echo $usuario;
+
 
 
 ?>
