@@ -29,12 +29,27 @@ echo json_encode($usuarios); //codifica os dados na tela*/
 
 // carrega um usuário usando login e senha
 
+//$usuario = new Usuario();
+
+//$usuario -> login("root","@#$");
+
+//echo $usuario;
+
+// Insere um novo usuário na tabela
+
+/*$aluno = new Usuario("aluno","@lun0");
+
+$aluno->insert();
+
+echo $aluno;*/
+
 $usuario = new Usuario();
 
-$usuario -> login("root","@#$");
+$usuario ->loadbyId(8);
+
+$usuario -> update ("professor","12390098");
 
 echo $usuario;
-
 
 
 ?>
