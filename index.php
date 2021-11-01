@@ -43,13 +43,21 @@ $aluno->insert();
 
 echo $aluno;*/
 
+/*LAT
 $usuario = new Usuario();
 
 $usuario ->loadbyId(8);
 
 $usuario -> update ("professor","12390098");
 
-echo $usuario;
+echo $usuario;*/
 
+$usuario = new Usuario();
+
+$usuario ->loadbyId(9);
+
+$usuario->delete();
+
+echo $usuario;
 
 ?>
